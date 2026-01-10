@@ -1,23 +1,345 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FinancialService 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "2026년 암보험 특약 가이드",
+    "image": "https://도메인/logo-insurance.png",
+    "url": "https://도메인/cancer-insurance-rider",
+    "telephone": "02-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "서울 강남구 테헤란로 123",
+      "addressLocality": "강남구",
+      "addressRegion": "서울",
+      "postalCode": "06130",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "대한민국"
+    },
+    "priceRange": "₩₩₩",
+    "description": "2026년 최신 암보험 특약 정보를 상세히 비교 분석합니다. 비갱신형, 갱신형 암보험 차이점부터 진단비, 수술비 특약 금액 비교, 가입 순위 및 체크리스트까지 한눈에 확인하세요."
+  }
+  </script>
+
+  <style>
+    /* Noto Sans KR 폰트 */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+    /* 기본 레이아웃 및 폰트 설정 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f4f7f6; color:#333; line-height:1.7; font-size:16px; }
+    header, section, footer { max-width:900px; margin:20px auto; padding:30px; background:#ffffff; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color:#0a4c8f; margin-bottom:15px; font-weight:700; }
+    h1 { font-size:2.8rem; text-align:center; line-height:1.3; margin-top:0; }
+    h2 { font-size:2rem; border-bottom:3px solid #e0eaff; padding-bottom:12px; }
+    h3 { font-size:1.5rem; color:#1f6ab0; margin-top:20px; }
+    p, li, td, th { font-size:1rem; line-height:1.8; }
+    ul, ol { padding-left:25px; margin-top:15px; }
+    li { margin-bottom:10px; }
+    /* 테이블 스타일 */
+    table { width:100%; border-collapse: separate; border-spacing: 0; margin:25px 0; border-radius:12px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    th, td { padding:15px; text-align:left; border-bottom:1px solid #e0eaff; }
+    th { background:#0a4c8f; color:#fff; font-weight:700; text-align:center; }
+    tr:nth-child(even) { background-color: #f7faff; }
+    /* 링크 스타일 */
+    a { color:#0a4c8f; text-decoration:none; transition: color 0.3s ease; }
+    a:hover { text-decoration:underline; color:#0d6efd; }
+    .btn-cta {
+      display:inline-block;
+      padding:16px 35px;
+      background:#0d6efd;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 8px 15px rgba(13, 110, 253, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      font-size:1.1rem;
+    }
+    .btn-cta:hover {
+      background:#0a58ca;
+      transform:translateY(-3px);
+    }
+    /* 내부 링크용 앵커 */
+    .anchor { display:block; position:relative; top:-100px; visibility:hidden; }
+    /* 내비게이션 스타일 */
+    nav ul { list-style:none; padding:0; text-align:center; background:#f0f4f8; border-radius:10px; padding:15px; box-shadow:inset 0 2px 5px rgba(0,0,0,0.05); }
+    nav li { display:inline-block; margin:0 12px; }
+    nav a { font-weight:700; color:#333; transition:color 0.3s ease; }
+    nav a:hover { color:#0a4c8f; }
+    /* 강조 섹션 (그래프/표를 위한 영역) */
+    .highlight-section { background:#f9f9f9; padding:25px; border-radius:10px; margin-top:20px; border:1px solid #e0eaff; }
+    .highlight-section h3 { border-bottom:2px solid #a3c4ff; padding-bottom:8px; margin-top:0; color:#0a4c8f; }
+    /* 폼 스타일 */
+    form label { display:block; font-weight:700; margin-top:15px; color:#555; }
+    form input[type="text"], form input[type="tel"], form select, form textarea {
+      width:100%; padding:12px; margin-top:5px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px; box-sizing:border-box; font-size:1rem; transition:border-color 0.3s;
+    }
+    form input:focus, form textarea:focus, form select:focus { border-color:#0d6efd; outline:none; box-shadow:0 0 5px rgba(13, 110, 253, 0.2); }
+    /* 반응형 디자인 */
+    @media(max-width:768px) {
+      header, section, footer { margin:10px; padding:20px; }
+      h1 { font-size:2.2rem; }
+      h2 { font-size:1.8rem; }
+      nav li { display:block; margin:8px 0; }
+      .btn-cta { width:100%; padding:18px 0; font-size:1rem; }
+      table, th, td { display:block; }
+      th { text-align:right; border-right:none; border-bottom:1px solid #fff; }
+      td { border-left:none; border-bottom:1px solid #e0eaff; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>2026년 암보험 특약: 완벽 가이드</h1>
+    <p>암보험 특약 가입 전 필수 체크리스트와 갱신형·비갱신형 장단점 비교, 추천 순위까지 상세 분석.</p>
+    <a class="btn-cta" href="#contact">내게 맞는 암보험 특약 추천 견적 받기</a>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <ul>
+      <li><a href="#definition">암보험 특약 정의 및 중요성</a></li>
+      <li><a href="#rider-types">주요 암보험 특약 종류 분석</a></li>
+      <li><a href="#cost-factors">암보험 금액 결정 요소 및 차이점</a></li>
+      <li><a href="#comparison">갱신형 vs 비갱신형 장단점 비교</a></li>
+      <li><a href="#checklist">2026년 암보험 가입 체크리스트</a></li>
+      <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
+      <li><a href="#contact">전문가와 무료 상담하기</a></li>
+    </ul>
+  </nav>
+
+  <section id="definition">
+    <span id="definition-anchor" class="anchor"></span>
+    <h2>암보험 특약이란 무엇인가?</h2>
+    <p>암보험 특약(Rider)은 기본 암보험 상품으로는 보장되지 않는 특정 암 관련 위험을 추가로 보장받기 위해 가입하는 옵션입니다. 일반적인 암보험은 진단비 위주로 보장하지만, 특약을 통해 수술비, 입원일당, 항암치료비 등 세부적인 의료 비용을 보강할 수 있습니다. 2026년 현재 의료 기술 발달로 암 치료법이 다양해지고 치료 기간이 길어짐에 따라, 암보험 가입자들은 단순히 '암 진단비'만으로는 충분하지 않다고 판단하여 특약의 중요성이 더욱 강조되고 있습니다.</p>
+    <p><strong>주요 암보험특약 종류 (핵심 키워드: 진단비, 수술비, 항암치료비, 입원일당)</strong></p>
+    <ul>
+      <li><strong>진단비 특약:</strong> 암 진단 시 일시금 지급 (가장 기본적인 특약). 일반암, 고액암, 소액암, 유사암 분류에 따라 금액이 달라집니다.</li>
+      <li><strong>수술비 특약:</strong> 암 종류에 따른 수술 시 정액 지급.</li>
+      <li><strong>입원비/통원비 특약:</strong> 암 치료를 위한 입원 및 통원 시 일당 지급.</li>
+      <li><strong>표적항암약물치료 특약:</strong> 최신 항암치료 기법인 표적치료에 대한 보장으로, 고가의 치료비 보장을 위해 최근 중요성이 높아지고 있습니다.</li>
+    </ul>
+    <p class="highlight-section"><strong>자동완성 키워드 분석:</strong> 많은 사람들이 암보험을 검색할 때 '암보험 추천', '암보험 순위', '비갱신형 암보험'과 함께 '암보험특약'을 검색하는 경향이 있습니다. 이는 암보험 가입자가 기본 상품뿐만 아니라 세부 보장 내용에도 관심이 많다는 것을 의미합니다.</p>
+  </section>
+
+  <section id="rider-types">
+    <span id="rider-types-anchor" class="anchor"></span>
+    <h2>주요 암보험 특약 종류와 보장 내용</h2>
+    <p>암보험은 주계약(진단비) 외에 다양한 특약을 통해 맞춤형 보장이 가능합니다. 각 특약의 장단점을 파악하여 내게 맞는 보장설계가 중요합니다. 2026년 기준, 암 발생률이 높아지는 추세와 함께 다양한 신기술 치료법이 등장하면서 특약의 범위도 확대되고 있습니다.</p>
+
+    <h3>1. 암 진단비 특약 (고액암/소액암/유사암 분류)</h3>
+    <p>암 진단비 특약은 암 종류에 따라 지급 금액이 다릅니다. 특히 유사암(갑상선암, 기타피부암 등)의 보장 금액이 일반암 대비 적은 경우가 많으므로 확인이 필수입니다.</p>
+    <ul>
+      <li><strong>일반암:</strong> 위암, 간암, 폐암, 대장암 등 대부분의 암. 기본 진단비 보장.</li>
+      <li><strong>고액암:</strong> 췌장암, 식도암, 뇌암 등 치료비가 많이 드는 암. 일반암보다 높은 진단비 지급.</li>
+      <li><strong>소액암/유사암:</strong> 갑상선암, 경계성종양, 제자리암 등. 일반암 진단비의 10~20%만 지급하는 경우가 흔하므로 가입 시 보장 금액을 꼼꼼히 체크해야 합니다.</li>
+    </ul>
+
+    <h3>2. 항암치료 관련 특약 (표적항암치료비 포함)</h3>
+    <p>기존의 암보험이 방사선/약물 항암치료를 보장했다면, 최근에는 고액의 표적항암치료비 특약이 중요해졌습니다. 이 치료법은 부작용이 적고 효과가 뛰어나지만, 비용이 매우 높아 별도의 특약 없이는 부담이 될 수 있습니다. 2026년 현재 신규 가입자들은 이 특약을 필수로 고려하는 추세입니다.</p>
+
+    <h3>3. 재진단암 및 요양 관련 특약</h3>
+    <p>암 완치 후 재발이나 전이를 보장하는 특약입니다. 암 환자의 완치율이 높아지면서 재발에 대한 대비도 중요해졌습니다. 재진단암 특약은 최초 암 진단 이후 2년이 경과한 시점에 새로운 암이 발생하거나 재발했을 때 진단비를 지급합니다. 또한, 요양병원 입원일당 특약도 장기간 요양에 대비하는 데 도움이 됩니다.</p>
+  </section>
+
+  <section id="cost-factors">
+    <span id="cost-factors-anchor" class="anchor"></span>
+    <h2>암보험 특약 비용 및 금액 결정 요소</h2>
+    <p>암보험 금액은 가입자의 연령, 성별, 건강 상태, 그리고 선택하는 특약에 따라 크게 달라집니다. 특히 '암보험 저렴한 곳'을 찾기 위해서는 단순히 주계약 보험료뿐만 아니라 특약의 구성과 비용 효율성을 따져봐야 합니다.</p>
+    <div class="highlight-section">
+      <h3>주요 비용 결정 요인</h3>
+      <ul>
+        <li><strong>갱신형 vs 비갱신형:</strong> 비갱신형은 초기 보험료가 높지만, 납입 기간 동안 보험료 변동이 없으므로 장기적인 관점에서 유리합니다. 갱신형은 초기 보험료가 저렴하지만, 갱신 시점에 보험료가 오를 수 있습니다.</li>
+        <li><strong>보장 기간:</strong> 80세, 90세, 100세 만기 등 보장 기간이 길수록 월 납입료가 높아집니다.</li>
+        <li><strong>특약 구성:</strong> 진단비 금액, 수술비 횟수, 표적항암치료비 포함 여부 등에 따라 보험료가 달라집니다. 특약 금액이 높을수록 보험료도 상승합니다.</li>
+        <li><strong>보험사별 차이:</strong> 각 보험사마다 손해율과 사업비 책정이 달라 같은 보장이라도 보험료 차이가 발생합니다. '암보험 순위'를 비교해 보면 평균 금액을 알 수 있습니다.</li>
+      </ul>
+    </div>
+
+    <h3>2026년 기준 암보험 주요 특약 예상 금액 비교표</h3>
+    <p>아래 표는 40세 남성 기준, 월 납입료에 따른 주요 특약의 예상 비용(평균 금액)을 나타냅니다. (보험사, 상품 종류에 따라 금액은 달라질 수 있습니다.)</p>
+    <table>
+      <thead>
+        <tr>
+          <th>특약 유형</th>
+          <th>보장 금액 (예시)</th>
+          <th>월 예상 추가 보험료 (30세)</th>
+          <th>월 예상 추가 보험료 (50세)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>암 진단비 (일반암)</td>
+          <td>3,000만원</td>
+          <td>₩10,000 ~ ₩20,000</td>
+          <td>₩25,000 ~ ₩40,000</td>
+        </tr>
+        <tr>
+          <td>고액암 진단비 (추가)</td>
+          <td>2,000만원</td>
+          <td>₩3,000 ~ ₩8,000</td>
+          <td>₩10,000 ~ ₩18,000</td>
+        </tr>
+        <tr>
+          <td>암 수술비 (1회당)</td>
+          <td>300만원</td>
+          <td>₩5,000 ~ ₩12,000</td>
+          <td>₩15,000 ~ ₩25,000</td>
+        </tr>
+        <tr>
+          <td>항암방사선약물치료비</td>
+          <td>5,000만원 한도</td>
+          <td>₩8,000 ~ ₩15,000</td>
+          <td>₩20,000 ~ ₩30,000</td>
+        </tr>
+        <tr>
+          <td>표적항암약물치료비</td>
+          <td>5,000만원 한도</td>
+          <td>₩10,000 ~ ₩18,000</td>
+          <td>₩25,000 ~ ₩40,000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>참고:</strong> 위 표는 가이드라인이며, 가입자의 나이, 성별, 건강검진 결과에 따라 실제 납입 금액은 달라질 수 있습니다. 정확한 '내돈내산' 견적은 전문가 상담을 통해 확인하는 것이 좋습니다.</p>
+  </section>
+
+  <section id="comparison">
+    <span id="comparison-anchor" class="anchor"></span>
+    <h2>갱신형 vs 비갱신형 암보험 특약 장단점 비교</h2>
+    <p>암보험을 선택할 때 가장 중요한 고민 중 하나는 '갱신형'과 '비갱신형' 중 어떤 유형을 선택할지 여부입니다. 각 유형의 장단점과 차이점을 명확히 이해해야 장기적인 관점에서 유리한 선택을 할 수 있습니다.</p>
+
+    <h3>갱신형 암보험 특약의 장단점</h3>
+    <p>갱신형은 초기 보험료가 매우 저렴하다는 장점이 있습니다. '저렴한 곳'을 찾을 때 가장 먼저 눈에 띄는 상품 유형입니다. 그러나 갱신 주기(3년, 5년, 10년 등)마다 보험료가 재산정되어 상승할 수 있습니다. 특히 고령화가 진행될수록 보험료 인상 폭이 커질 수 있어, 장기 유지 시 총 납입 금액이 비갱신형보다 높아질 가능성이 있습니다.</p>
+
+    <div class="highlight-section">
+      <h3>비갱신형 암보험 특약의 장단점</h3>
+      <p>비갱신형은 초기 보험료가 갱신형보다 높지만, 납입 기간(예: 20년 납입)이 끝날 때까지 보험료가 변동되지 않습니다. 한번 확정된 금액으로 보험을 유지할 수 있어 장기적인 재정 계획에 유리합니다. 젊을 때 가입할수록 월 보험료가 낮게 책정되므로, '가입 순위'와 '추천' 상품을 볼 때 비갱신형이 상위에 랭크되는 경우가 많습니다.</p>
+    </div>
+
+    <h3>차이점 비교 테이블</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>갱신형 암보험</th>
+          <th>비갱신형 암보험</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>보험료 변동 여부</td>
+          <td>갱신 주기마다 변동 (주로 상승)</td>
+          <td>납입 기간 내내 동일 (고정)</td>
+        </tr>
+        <tr>
+          <td>초기 보험료</td>
+          <td>저렴한 편</td>
+          <td>상대적으로 비쌈</td>
+        </tr>
+        <tr>
+          <td>총 납입 금액 (장기)</td>
+          <td>높아질 수 있음 (고령층 불리)</td>
+          <td>낮아질 수 있음 (젊은층 유리)</td>
+        </tr>
+        <tr>
+          <td>주요 장점</td>
+          <td>초기 비용 부담 감소</td>
+          <td>장기적인 재정 안정성</td>
+        </tr>
+        <tr>
+          <td>추천 대상</td>
+          <td>단기 보장 희망, 은퇴 전까지만 보장 필요</td>
+          <td>젊은 나이에 가입하여 100세까지 보장 희망</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="checklist">
+    <span id="checklist-anchor" class="anchor"></span>
+    <h2>2026년 암보험 특약 가입 전 필수 체크리스트</h2>
+    <p>암보험 가입을 결정했다면, 아래 체크리스트를 통해 보장 내용을 꼼꼼히 확인하고 '내돈내산' 후기가 좋은 상품을 선택하세요. 특히 2026년 개정된 보험 약관이나 새로운 특약에 대한 이해가 필요합니다.</p>
+
+    <ol>
+      <li><strong>진단비 보장 범위 확인 (소액암/유사암):</strong> 갑상선암, 제자리암 등 유사암의 보장 금액이 일반암 대비 얼마나 되는지 확인합니다. 유사암 보장 한도가 높을수록 유리합니다.</li>
+      <li><strong>면책 기간 및 감액 기간 확인:</strong> 암보험 가입 후 일정 기간(면책 기간: 보통 90일) 동안은 보장을 받을 수 없습니다. 또한, 1~2년 동안은 진단비가 50%만 지급되는 감액 기간이 있는지 확인해야 합니다.</li>
+      <li><strong>갱신형 vs 비갱신형 결정:</strong> 자신의 재정 상황과 보장 기간을 고려하여 선택합니다. 젊을수록 비갱신형이 장기적으로 유리합니다.</li>
+      <li><strong>만기 설정 (100세 만기 추천):</strong> 평균 수명이 증가하면서 80세 만기보다는 100세 만기가 '추천'됩니다. 보장 기간이 길수록 월 보험료는 비싸지지만, 고령에 암이 발생했을 때 보장받을 수 있습니다.</li>
+      <li><strong>의료 기술 변화에 따른 특약 구성:</strong> 최신 표적항암치료비, 면역항암치료비 등 고액 치료비 특약을 충분히 포함했는지 확인합니다.</li>
+      <li><strong>보험사별 순위 및 비교:</strong> '암보험 순위'를 참고하되, 자신에게 맞는 특약 구성에 따라 '암보험 추천' 상품이 달라질 수 있습니다. 여러 보험사의 견적을 비교해 보세요.</li>
+      <li><strong>기존 보험과의 중복 여부 확인:</strong> 이미 가입한 실손보험이나 다른 보험에서 보장되는 항목이 있는지 확인하여 중복 가입을 피하고 보험료를 절약합니다.</li>
+    </ol>
+    <a class="btn-cta" href="#contact">나에게 최적화된 암보험 특약 상담 요청</a>
+  </section>
+
+  <section id="faq">
+    <span id="faq-anchor" class="anchor"></span>
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl>
+      <dt>Q1: 갱신형 암보험 특약이 '저렴한 곳'이라고 광고하던데, 무조건 좋은 건가요?</dt>
+      <dd>A: 초기 보험료가 저렴한 것은 맞지만, 갱신 시점에 보험료가 크게 오를 수 있습니다. 특히 고령이 되면 인상 폭이 커져 장기적으로는 비갱신형보다 총 납입액이 많아질 수 있습니다.</dd>
+
+      <dt>Q2: 2026년 암보험 트렌드에서 가장 중요한 '특약'은 무엇인가요?</dt>
+      <dd>A: 2026년에는 '표적항암약물치료 특약'의 중요성이 커지고 있습니다. 기존의 항암치료보다 효과가 좋고 부작용이 적지만, 치료 비용이 수천만원에 달해 특약 없이는 개인 부담이 매우 큽니다.</dd>
+
+      <dt>Q3: 암보험 가입 시 '암보험 진단비'를 얼마로 설정해야 하나요?</dt>
+      <dd>A: 평균적으로 3,000만 원~5,000만 원 정도가 추천됩니다. 진단비는 치료비뿐만 아니라 생활비로도 사용할 수 있으므로, 암 발병 시 발생하는 소득 상실 기간을 고려하여 설정해야 합니다. '암보험 금액' 설정 시에는 가계 경제 상황을 고려해야 합니다.</dd>
+
+      <dt>Q4: '내돈내산' 암보험 후기를 보면 '유사암' 보장이 중요하다고 하던데 왜 그런가요?</dt>
+      <dd>A: 유사암(갑상선암, 제자리암 등)은 발병률이 높지만 일반암 진단비의 10~20%만 지급하는 경우가 많습니다. 최근에는 유사암 진단비 보장 한도를 높인 상품이 '추천'됩니다.</dd>
+
+      <dt>Q5: 건강검진에서 이상 소견이 나왔는데, 암보험 가입이 가능한가요?</dt>
+      <dd>A: 질병의 정도에 따라 가입이 제한되거나 보험료가 할증될 수 있습니다. 유병력자를 위한 '간편 심사 보험' 상품도 있으니 전문가와 상담해 보세요.</dd>
+    </dl>
+  </section>
+
+  <section id="contact">
+    <span id="contact-anchor" class="anchor"></span>
+    <h2>나에게 맞는 암보험 특약 무료 상담 신청</h2>
+    <p>복잡한 암보험 특약, 혼자 고민하지 마세요. 전문가가 갱신형/비갱신형 차이점부터 '암보험 순위', '암보험 추천' 상품까지 비교하여 최적의 설계를 도와드립니다. 아래 양식을 작성해 주시면 연락드리겠습니다.</p>
+    <form action="/submit" method="POST" style="max-width:600px; margin:auto;">
+      <label for="name">이름<span style="color:red;">*</span></label><br />
+      <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;" />
+
+      <label for="phone">연락처<span style="color:red;">*</span></label><br />
+      <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;" />
+
+      <label for="birthdate">생년월일 (보험료 산정에 필요)</label><br />
+      <input type="text" id="birthdate" name="birthdate" placeholder="예: 19901020" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;" />
+
+      <label for="move-type">상담 희망 유형<span style="color:red;">*</span></label><br />
+      <select id="move-type" name="move_type" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;">
+        <option value="">선택하세요</option>
+        <option value="비갱신형 암보험 특약 상담">비갱신형 암보험 특약 상담</option>
+        <option value="갱신형 암보험 특약 상담">갱신형 암보험 특약 상담</option>
+        <option value="유병력자 암보험 상담">유병력자 암보험 상담</option>
+        <option value="기존 암보험 분석 및 리모델링">기존 암보험 분석 및 리모델링</option>
+      </select>
+
+      <label for="message">추가 요청 사항</label><br />
+      <textarea id="message" name="message" rows="4" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;" placeholder="예: 현재 나이, 원하는 보장 금액, 궁금한 점 등"></textarea>
+
+      <button type="submit" class="btn-cta">무료 상담 신청하기</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 암보험 특약 전문 정보. 모든 정보는 참고용이며, 정확한 내용은 약관을 확인하시기 바랍니다.</p>
+    <p>본 사이트는 보험 대리점으로부터 소정의 수수료를 받고 운영될 수 있습니다. | 개인정보 처리방침 | 이용약관</p>
+    <p><strong>외부 신뢰성 자료 출처:</strong><br />
+      [1] 금융감독원 (FSS) <a href="https://www.fss.or.kr">https://www.fss.or.kr</a><br />
+      [2] 국립암센터 (National Cancer Center) <a href="https://www.ncc.re.kr">https://www.ncc.re.kr</a><br />
+      [3] 나무위키 (암보험) <a href="https://namu.wiki/w/%EC%95%94%EB%B3%B4%ED%97%98">https://namu.wiki/w/암보험</a><br />
+      [4] 한국보험신문 (Korea Insurance Daily) <a href="https://www.insdaily.co.kr">https://www.insdaily.co.kr</a><br />
+      [5] 통계청 (KOSTAT) <a href="https://kostat.go.kr">https://kostat.go.kr</a></p>
+  </footer>
+
+
+  
